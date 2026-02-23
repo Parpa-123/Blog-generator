@@ -1,10 +1,10 @@
-# 📝 AI Blog Generator Agent
+# AI Blog Generator Agent
 
 An agentic AI-powered blog generator built with **LangGraph**, **LangChain**, and **Groq (Llama 3.3 70B)**. It generates SEO-friendly blog titles and content from a topic, with optional multi-language translation — all served through a **FastAPI** backend.
 
 ---
 
-## ✨ Features
+## Features
 
 - **AI Blog Generation** — Automatically generates creative, SEO-optimized blog titles and content for any given topic.
 - **Multi-Language Translation** — Optionally translates generated blogs into **Hindi** or **French** using conditional graph routing.
@@ -14,39 +14,18 @@ An agentic AI-powered blog generator built with **LangGraph**, **LangChain**, an
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
-```
-User Request
-     │
-     ▼
-  FastAPI
-     │
-     ▼
- LangGraph State Machine
-     │
-     ├── Title Creation Node
-     │        │
-     │        ▼
-     ├── Content Generation Node
-     │        │
-     │        ▼
-     ├── Route Node (conditional)
-     │        │
-     │   ┌────┼────────┐
-     │   ▼    ▼        ▼
-     │ Hindi French  English
-     │ Trans  Trans  (no-op)
-     │   │    │        │
-     └───┴────┴────────┘
-              │
-              ▼
-         Response
-```
+The application follows a multi-step LangGraph state machine workflow:
+
+1. **Title Creation** — Generates an SEO-friendly blog title from the given topic.
+2. **Content Generation** — Produces detailed blog content based on the topic.
+3. **Routing** *(translation flow only)* — Conditionally routes to Hindi, French, or English (no-op) translation nodes.
+4. **Translation** — Translates the blog title and content into the target language.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Project-2/
@@ -66,7 +45,7 @@ Project-2/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -111,7 +90,7 @@ The API will be available at `http://localhost:8000`. Interactive docs are at `h
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### `POST /blogs` — Generate a Blog
 
@@ -167,7 +146,7 @@ Generate a blog and translate it into a specified language (`hindi`, `french`, o
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Component | Technology |
 |---|---|
